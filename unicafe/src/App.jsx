@@ -24,6 +24,9 @@ function App() {
         <p>No feedback given</p>
       ) : (
         <>
+          <Statistics text="good" stats={good} />
+          <Statistics text="neutral" stats={neutral} />
+          <Statistics text="bad" stats={bad} />
           <Statistics text={"all"} stats={good + bad + neutral} />
           <Statistics text={"positive"} stats={positive()} />
           <Statistics text={"average"} stats={average()} />
@@ -37,9 +40,14 @@ function Button({ text, onClick }) {
 }
 function Statistics({ text, stats }) {
   return (
-    <div>
-      {text} {stats}
-    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td>{text}</td>
+          <td>{stats}</td>
+        </tr>
+      </tbody>
+    </table>
   );
 }
 
