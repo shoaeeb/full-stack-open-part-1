@@ -20,13 +20,17 @@ function App() {
       <button onClick={() => setGood(good + 1)}>good</button>
       <button onClick={() => setNeutral(neutral + 1)}>neutral</button>
       <button onClick={() => setBad(bad + 1)}>bad</button>
-      <Statistics
-        average={average()}
-        positive={positive()}
-        good={good}
-        bad={bad}
-        neutral={neutral}
-      />
+      {good + neutral + bad === 0 ? (
+        <p>No feedback given</p>
+      ) : (
+        <Statistics
+          average={average()}
+          positive={positive()}
+          good={good}
+          bad={bad}
+          neutral={neutral}
+        />
+      )}
     </div>
   );
 }
