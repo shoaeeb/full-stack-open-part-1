@@ -12,10 +12,27 @@ function App() {
     "The only way to go fast, is to go well.",
   ];
   const [selected, setSelected] = useState(0);
-  let votes = new Array(anecdotes.length).fill(0);
-  function vote() {
-    votes = [...votes];
-    votes[selected] += 1;
+  const [vote, setVote] = useState(
+    Array.from({ length: anecdotes.length }, () => 0)
+  );
+  const [anecodotesWithMostVotes, setAnecdotesWithMostVotes] = useState(0);
+  console.log("heelo");
+  function Vote() {
+    vote[selected] += 1;
+    setVote([...vote]);
+    const index = getMostVoted();
+    setAnecdotesWithMostVotes(index);
+  }
+  function getMostVoted() {
+    let max = 0;
+    let index = 0;
+    for (let i = 0; i < vote.length; i++) {
+      if (vote[i] > max) {
+        max = vote[i];
+        index = i;
+      }
+    }
+    return index;
   }
   return (
     <div>
@@ -27,7 +44,9 @@ function App() {
       >
         next anecdote
       </button>
-      <button onClick={vote}>vote</button>
+      <button onClick={Vote}>vote</button>
+      <h1>Anecdote with most votes</h1>
+      <p>{anecdotes[anecodotesWithMostVotes]}</p>
     </div>
   );
 }
