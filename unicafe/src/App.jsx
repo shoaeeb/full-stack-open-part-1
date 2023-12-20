@@ -26,7 +26,7 @@ function App() {
         <>
           <Statistics text="good" stats={good} />
           <Statistics text="neutral" stats={neutral} />
-          <Statistics text="bad" stats={bad} />
+          
           <Statistics text={"all"} stats={good + bad + neutral} />
           <Statistics text={"positive"} stats={positive()} />
           <Statistics text={"average"} stats={average()} />
