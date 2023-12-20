@@ -12,6 +12,11 @@ function App() {
     "The only way to go fast, is to go well.",
   ];
   const [selected, setSelected] = useState(0);
+  let votes = new Array(anecdotes.length).fill(0);
+  function vote() {
+    votes = [...votes];
+    votes[selected] += 1;
+  }
   return (
     <div>
       {anecdotes[selected]}
@@ -22,6 +27,7 @@ function App() {
       >
         next anecdote
       </button>
+      <button onClick={vote}>vote</button>
     </div>
   );
 }
